@@ -1,0 +1,55 @@
+{% extends './base.html.twig' %}
+
+{% block title %}Hello BucketListController!{% endblock %}
+
+{% block body %}
+<section class="w-75 mx-auto">
+    {% if bucketListAll is not empty %}
+        <h1 class="text-center  my-4">Liste des taches</h1>
+        {% for message in app.flashes('success') %}
+            <div class="alert alert-success">
+                {{ message }}
+            </div>
+        {% endfor %}
+        <div class="container">
+            <table class="table table-bordered">
+                <thead>
+                <tr>
+                    <th scope="col">Libelle</th>
+                    <th scope="col">Description</th>
+                    <th scope="col">Auteur</th>
+                    <th scope="col">Catégorie</th>
+                    <th scope="col">Ajoutée le </th>
+
+                    <th class="border-0"></th>
+                    <th class="border-0"></th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for bucketList in bucketListAll %}
+                    <tr>
+                        <td>{{ bucketList.title }}</td>
+                        <td>{{ bucketList.description }}</td>
+                        <td>{{ bucketList.author }}</td>
+                        <td>{{ bucketList.category.name }}</td>
+                        <td>{{ bucketList.createdAt | date("d/m/Y") }}</td>
+                        <td class="border-0"><a class="btn btn-warning" href="{{ path('bucket_list.edit',{id:bucketList.id}) }}">Editer une tache</a></td>
+                        <td class="border-0"><a class="btn btn-danger" href="{{ path('bucket_list.delete',{id:bucketList.id}) }}">Supprimer une tache</a></td>
+                        <td class="border-0"><a class="btn btn-primary" href="{{ path('bucket_list.detail',{id:bucketList.id}) }}">Détail</a></td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+
+        </div>
+    {%endif %}
+    {% if bucketListAll is same as []%}
+    <h2>Il y a rien à faire</h2>
+     {% endif %}
+    <div class="d-flex justify-content-center">
+        <a class="btn btn-primary w-50 text-center " href="{{ path('bucket_list.new') }}">Ajouter une tache</a>
+    </div>
+
+
+</section>
+{% endblock %}

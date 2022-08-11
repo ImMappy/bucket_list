@@ -1,0 +1,25 @@
+{% extends './base.html.twig' %}
+
+{% block title %}Nouvel Utilisateur{% endblock %}
+
+{% block body %}
+    {{ form_start(form) }}
+<div class="container">
+    <h1 class="text-center mt-4">Nouvel utilisateur</h1>
+    <div class="form-group">
+        {{ form_label(form.username) }}
+        {{ form_widget(form.username) }}
+        {{ form_errors(form.username) }}
+    </div>
+    <div class="form-group">
+        {{ form_row(form.password.first) }}
+        {{ form_row(form.password.second) }}
+    </div>
+    <div class="form-group d-flex justify-content-center">
+        {{ form_row(form.submit) }}
+    </div>
+</div>
+    {{ form_end(form) }}
+
+
+{% endblock %}

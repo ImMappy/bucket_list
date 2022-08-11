@@ -1,0 +1,22 @@
+{% extends './base.html.twig' %}
+
+{% block title %}Hello BucketListController!{% endblock %}
+
+{% block body %}
+    <h1 class="text-center mt-4">Détail de la tache {{ bucketList.id }}</h1>
+    <div>
+        <span><strong>Catégorie : </strong> {{ bucketList.category }}</span>
+    </div>
+    <div>
+        <div>
+            <span><strong>Titre :</strong>  {{ bucketList.title }}</span>
+        </div>
+        <div>
+            <span><strong>Description : </strong>{{ bucketList.description}}</span>
+        </div>
+        <div>
+            <span><strong>Auteur : </strong>{{ bucketList.author}}</span>
+        </div>
+
+    </div>
+{% endblock %}

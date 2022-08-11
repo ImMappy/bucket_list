@@ -1,0 +1,30 @@
+{% extends './base.html.twig' %}
+{% block body%}
+    {{ form_start(form) }}
+    <h1>Modifier une tache</h1>
+    <div class="container">
+        <div class="form-group">
+            {{ form_label(form.title) }}
+            {{ form_widget(form.title) }}
+        </div>
+        <div class="form-error">
+            {{ form_errors(form.title) }}
+        </div>
+        <div class="form-group">
+            {{ form_label(form.description) }}
+            {{ form_widget(form.description) }}
+        </div>
+        <div class="form-group">
+            {{ form_label(form.author) }}
+            {{ form_widget(form.author) }}
+        </div>
+        <div class="form-group">
+            {{ form_row(form.submit) }}
+        </div>
+        <div class="form-error">
+            {{ form_errors(form.title) }}
+        </div>
+        {{ form_end(form) }}
+    </div>
+
+{% endblock %}
